@@ -12,20 +12,20 @@ import com.issueapi.model.Role;
 
 @Repository
 public interface RoleRepository {
-	@Select("select * from tblrole")
+	@Select("select * from tb_role")
 	public List<Role> findAll();
 	
-	@Select("select * from tblrole where roleID=#{id}")
+	@Select("select * from tb_role where roleID=#{id}")
 	public Role findRoleById(Integer id);
 	
-	@Insert("INSERT INTO `tblrole`(`roleID`, `roleName`,`createBy`, `updateBy`, `createDate`, `updateDate`) "
+	@Insert("INSERT INTO `tb_role`(`roleID`, `roleName`,`createBy`, `updateBy`, `createDate`, `updateDate`) "
 			+ "VALUES (#{roleID},#{roleName},#{createBy}, #{updateBy}, #{createDate}, #{updateDate})")
 	public boolean save(Role role);
 
-	@Delete("DELETE FROM `tblrole` WHERE `roleID`= #{id}")
+	@Delete("DELETE FROM `tb_role` WHERE `roleID`= #{id}")
 	public boolean removeRoleById(Integer id);
 	
-	@Update("UPDATE `tblrole` SET `roleID`=#{roleID},`roleName`=#{roleName},"
+	@Update("UPDATE `tb_role` SET `roleID`=#{roleID},`roleName`=#{roleName},"
 			+ "`createBy`=#{createBy},`updateBy`=#{updateBy},`createDate`=#{createDate},"
 			+ "`updateDate`=#{updateDate} WHERE `roleID`= #{roleID}")
 	public boolean updateRoleById(Role role);

@@ -43,14 +43,14 @@ public class RoleRestController {
 	}
 	
 	@DeleteMapping("/roles/{id}")
-	public void removeRoleById(@PathVariable Integer  id){
+	public boolean removeRoleById(@PathVariable Integer  id){
 		System.out.println(id);	
-		roleService.removeRoleById(id);
+		return roleService.removeRoleById(id);
 	}
 	@PutMapping("/roles")
-	public void updateRoleById(@RequestBody Role role){
-		 	System.out.println(role);
-		 	roleService.updateRoleById(role);
+	public boolean updateRoleById(@RequestBody Role role){
+		 	System.out.println(role.getRoleID());
+		 	return roleService.updateRoleById(role);
 	
 	}
 }

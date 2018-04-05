@@ -30,11 +30,15 @@ public class RoleServiceImp implements RoleService{
 		return roleRepository.save(role);
 	}
 	@Override
-	public void removeRoleById(Integer id) {
-		if( roleRepository.removeRoleById(id))
+	public boolean removeRoleById(Integer id) {
+		boolean status=roleRepository.removeRoleById(id);
+		if(status ){
 			System.out.println("Successful removed role=" + id);
+			return status;
+		}
 		else
 			System.out.println("-> Remove Fail!");
+			return false;
 		/*for(Role role : getAllRoles()){
 			if (role.getRoleID()==id){
 				return roleRepository.removeRoleById(id);
@@ -43,11 +47,15 @@ public class RoleServiceImp implements RoleService{
 		//return false;
 	}
 	@Override
-	public void updateRoleById(Role role) {
-		if (roleRepository.updateRoleById(role))
-			System.out.println("-> Updated Role Successfully! "+ role.toString() + "");
+	public boolean updateRoleById(Role role) {
+		boolean status=roleRepository.updateRoleById(role);
+		if (status){
+			System.out.println(status + " -> Updated Role Successfully! "+ role.toString() + "");
+			return status;
+		}
 		else
 			System.out.println("-> Update Fail!");
+		return false;
 	}
 	
 
