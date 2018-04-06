@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.issueapi.model.Role;
 import com.issueapi.service.RoleService;
 //@Controller + @ResponseBody
 @RestController
+@RequestMapping("/api")
 public class RoleRestController {
 
 	@Autowired
