@@ -19,7 +19,8 @@ public interface UserRepository {
 	
 	@Select("select u.userID,u.username,u.password from tb_user u where u.username=#{username}")	
 	@Results({
-		@Result(property="roles",column="userID" , many=@Many(select="findRoleByUserId"))
+				@Result(property="userID",column="userID"),
+				@Result(property="roles",column="userID" , many=@Many(select="findRoleByUserId"))
 		})
 	User loadUserByUsername(String username);
 	
