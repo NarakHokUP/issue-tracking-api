@@ -2,9 +2,11 @@ package com.issueapi.model;
 
 import java.sql.Timestamp;
 
-public class Role {
+import org.springframework.security.core.GrantedAuthority;
+
+public class Role implements GrantedAuthority{
 	private int roleID;
-	private String roleName;
+	private String role;
 	private String createBy;
 	private String updateBy;
 	private Timestamp createDate;
@@ -14,11 +16,11 @@ public class Role {
 		super();
 	}
 
-	public Role(int roleID, String roleName, String createBy, String updateBy, Timestamp createDate,
+	public Role(int roleID, String role, String createBy, String updateBy, Timestamp createDate,
 			Timestamp updateDate) {
 		super();
 		this.roleID = roleID;
-		this.roleName = roleName;
+		this.role = role;
 		this.createBy = createBy;
 		this.updateBy = updateBy;
 		this.createDate = createDate;
@@ -33,12 +35,12 @@ public class Role {
 		this.roleID = roleID;
 	}
 
-	public String getRoleName() {
-		return roleName;
+	public String getrole() {
+		return role;
 	}
 
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+	public void setrole(String role) {
+		this.role = role;
 	}
 
 	public String getCreateBy() {
@@ -75,8 +77,13 @@ public class Role {
 
 	@Override
 	public String toString() {
-		return "Role [roleID=" + roleID + ", roleName=" + roleName + ", createBy=" + createBy + ", updateBy=" + updateBy
+		return "Role [roleID=" + roleID + ", role=" + role + ", createBy=" + createBy + ", updateBy=" + updateBy
 				+ ", createDate=" + createDate + ", updateDate=" + updateDate + "]";
+	}
+
+	@Override
+	public String getAuthority() {
+		return "ROLE_" + role;
 	}
 
 }
