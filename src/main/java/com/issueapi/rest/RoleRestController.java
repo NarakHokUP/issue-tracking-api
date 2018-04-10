@@ -1,12 +1,15 @@
 package com.issueapi.rest;
 
-import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+/*import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity;*/
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +28,38 @@ public class RoleRestController {
 
 	@Autowired
 	private RoleService roleService;
-	
 	@GetMapping("/roles")
+	public List<Role> getRoles(){
+		List<Role> roles;
+		System.out.println(roleService.getAllRoles());
+		return roles=roleService.getAllRoles();
+	}
+	
+	@PostMapping("/roles")
+	public boolean createRole(@RequestBody Role role){
+		 	System.out.println(role);
+		 	return roleService.createRole(role);
+	
+	}
+	
+	@DeleteMapping("/roles/{id}")
+	public boolean removeRoleById(@PathVariable Integer  id){
+		System.out.println(id);	
+		return roleService.removeRoleById(id);
+	}
+	
+	@PutMapping("/roles")
+	public boolean updateRoleById(@RequestBody Role role){
+		 	System.out.println(role.getRoleID());
+		 	return roleService.updateRoleById(role);
+	
+	}
+	
+	
+	
+	
+	
+	/*@GetMapping("/roles")
 	public Map<String,Object> getAllRoles(){
 		List<Role> roles=roleService.getAllRoles();
 		
@@ -37,9 +70,9 @@ public class RoleRestController {
 		System.out.println(roleService.getAllRoles());
 		return map;
 	}
-	/* customize response status with ResponseEntity
+	 customize response status with ResponseEntity
 	 * 
-	 * */
+	 * 
 	@GetMapping("/roles/{id}")
 	public ResponseEntity<Role> getRoleById(@PathVariable Integer  id){
 		Role role=roleService.findRoleById(id);
@@ -83,33 +116,9 @@ public class RoleRestController {
 			}
 		 	System.out.println(role.getRoleID());
 		 	return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	}
+	}*/
 	
 
-	/*@GetMapping("/roles")
-	public List<Role> getAllRoles(){
-		System.out.println(roleService.getAllRoles());
-		return roles=roleService.getAllRoles();;
-	}*/
 	
-	/*@PostMapping("/roles")
-	public boolean createRole(@RequestBody Role role){
-		 	System.out.println(role);
-		 	return roleService.createRole(role);
 	
-	}*/
-	
-	/*@DeleteMapping("/roles/{id}")
-	public boolean removeRoleById(@PathVariable Integer  id){
-		System.out.println(id);	
-		return roleService.removeRoleById(id);
-	}
-	
-	@PutMapping("/roles")
-	public boolean updateRoleById(@RequestBody Role role){
-		 	System.out.println(role.getRoleID());
-		 	return roleService.updateRoleById(role);
-	
-	}
-	*/
 }

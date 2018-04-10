@@ -1,6 +1,8 @@
 package com.issueapi.model;
 
-import java.sql.Timestamp;
+
+
+import java.util.Date;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -9,15 +11,15 @@ public class Role implements GrantedAuthority{
 	private String role;
 	private String createBy;
 	private String updateBy;
-	private Timestamp createDate;
-	private Timestamp updateDate;
+	private Date createDate;
+	private Date updateDate;
 
 	public Role() {
 		super();
 	}
 
-	public Role(int roleID, String role, String createBy, String updateBy, Timestamp createDate,
-			Timestamp updateDate) {
+	public Role(int roleID, String role, String createBy, String updateBy, Date createDate,
+			Date updateDate) {
 		super();
 		this.roleID = roleID;
 		this.role = role;
@@ -59,19 +61,19 @@ public class Role implements GrantedAuthority{
 		this.updateBy = updateBy;
 	}
 
-	public Timestamp getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Timestamp createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 
-	public Timestamp getUpdateDate() {
+	public Date getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Timestamp updateDate) {
+	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
 
