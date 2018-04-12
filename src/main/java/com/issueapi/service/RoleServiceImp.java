@@ -19,7 +19,7 @@ public class RoleServiceImp implements RoleService{
 	@Override
 	public Role findRoleById(Integer id) {
 		for(Role role : getAllRoles()){
-			if (role.getRoleID()==id){
+			if (role.getRoleid()==id){
 				return role;
 			}
 		}

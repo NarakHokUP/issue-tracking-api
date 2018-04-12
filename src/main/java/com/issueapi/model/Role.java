@@ -7,80 +7,88 @@ import java.util.Date;
 import org.springframework.security.core.GrantedAuthority;
 
 public class Role implements GrantedAuthority{
-	private int roleID;
+	private int roleid;
 	private String role;
-	private String createBy;
-	private String updateBy;
-	private Date createDate;
-	private Date updateDate;
-
+	private String createby;
+	private String updateby;
+	private String createdate;
+	private String updatedate;
+	
 	public Role() {
 		super();
 	}
 
-	public Role(int roleID, String role, String createBy, String updateBy, Date createDate,
-			Date updateDate) {
+	public Role(String role, String createby, String updateby, String createdate, String updatedate) {
 		super();
-		this.roleID = roleID;
 		this.role = role;
-		this.createBy = createBy;
-		this.updateBy = updateBy;
-		this.createDate = createDate;
-		this.updateDate = updateDate;
+		this.createby = createby;
+		this.updateby = updateby;
+		this.createdate = createdate;
+		this.updatedate = updatedate;
 	}
 
-	public int getRoleID() {
-		return roleID;
-	}
-
-	public void setRoleID(int roleID) {
-		this.roleID = roleID;
-	}
-
-	public String getrole() {
-		return role;
-	}
-
-	public void setrole(String role) {
+	public Role(int roleid, String role, String createby, String updateby, String createdate, String updatedate) {
+		super();
+		this.roleid = roleid;
 		this.role = role;
-	}
-
-	public String getCreateBy() {
-		return createBy;
-	}
-
-	public void setCreateBy(String createBy) {
-		this.createBy = createBy;
-	}
-
-	public String getUpdateBy() {
-		return updateBy;
-	}
-
-	public void setUpdateBy(String updateBy) {
-		this.updateBy = updateBy;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+		this.createby = createby;
+		this.updateby = updateby;
+		this.createdate = createdate;
+		this.updatedate = updatedate;
 	}
 
 	@Override
 	public String toString() {
-		return "Role [roleID=" + roleID + ", role=" + role + ", createBy=" + createBy + ", updateBy=" + updateBy
-				+ ", createDate=" + createDate + ", updateDate=" + updateDate + "]";
+		return "Role [roleid=" + roleid + ", role=" + role + ", createby=" + createby + ", updateby=" + updateby
+				+ ", createdate=" + createdate + ", updatedate=" + updatedate + "]";
+	}
+
+	public int getRoleid() {
+		return roleid;
+	}
+
+	public void setRoleid(int roleid) {
+		this.roleid = roleid;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getCreateby() {
+		return createby;
+	}
+
+	public void setCreateby(String createby) {
+		this.createby = createby;
+	}
+
+	public String getUpdateby() {
+		return updateby;
+	}
+
+	public void setUpdateby(String updateby) {
+		this.updateby = updateby;
+	}
+
+	public String getCreatedate() {
+		return createdate;
+	}
+
+	public void setCreatedate(String createdate) {
+		this.createdate = createdate;
+	}
+
+	public String getUpdatedate() {
+		return updatedate;
+	}
+
+	public void setUpdatedate(String updatedate) {
+		this.updatedate = updatedate;
 	}
 
 	@Override

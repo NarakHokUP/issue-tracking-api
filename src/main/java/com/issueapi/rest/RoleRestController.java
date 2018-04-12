@@ -50,7 +50,7 @@ public class RoleRestController {
 	
 	@PutMapping("/roles")
 	public boolean updateRoleById(@RequestBody Role role){
-		 	System.out.println(role.getRoleID());
+		 	System.out.println(role.getRoleid());
 		 	return roleService.updateRoleById(role);
 	
 	}
