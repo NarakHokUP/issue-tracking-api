@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.issueapi.model.Role;
@@ -49,12 +50,18 @@ public class RoleRestController {
 		 	return roleService.createRole(role);
 	
 	}
-	
+	//use PathVariable
 	@DeleteMapping("/roles/remove/{id}")
 	public boolean removeRoleById(@PathVariable("id") Integer  id){
 		System.out.println(id);	
 		return roleService.removeRoleById(id);
 	}
+	/*use Requestparam
+	@DeleteMapping("/roles/remove")
+	public boolean removeRoleById(@RequestParam("id") Integer  id){
+		System.out.println(id);	
+		return roleService.removeRoleById(id);
+	}*/
 	
 	@PutMapping("/roles")
 	public boolean updateRoleById(@RequestBody Role role){
