@@ -34,7 +34,15 @@ public class RoleRestController {
 		System.out.println(roleService.getAllRoles());
 		return roles=roleService.getAllRoles();
 	}
-	
+	@GetMapping("/roles/{id}")
+	public Role findRoleById(@PathVariable Integer  id){
+		Role role=roleService.findRoleById(id);
+		if(role==null){
+			return new Role();
+		}
+		System.out.println(roleService.findRoleById(id));
+		return role;
+	}
 	@PostMapping("/roles")
 	public boolean createRole(@RequestBody Role role){
 		 	System.out.println(role);
@@ -42,8 +50,8 @@ public class RoleRestController {
 	
 	}
 	
-	@DeleteMapping("/roles/{id}")
-	public boolean removeRoleById(@PathVariable Integer  id){
+	@DeleteMapping("/roles/remove/{id}")
+	public boolean removeRoleById(@PathVariable("id") Integer  id){
 		System.out.println(id);	
 		return roleService.removeRoleById(id);
 	}

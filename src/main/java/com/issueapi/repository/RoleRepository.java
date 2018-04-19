@@ -15,19 +15,19 @@ public interface RoleRepository {
 	@Select("select * from tb_role")
 	public List<Role> findAll();
 	
-	@Select("select * from tb_role where roleID=#{id}")
+	@Select("select * from tb_role where roleid=#{id}")
 	public Role findRoleById(Integer id);
 	
-	@Insert("INSERT INTO `tb_role`(`roleID`, `role`,`createBy`, `updateBy`, `createDate`, `updateDate`) "
-			+ "VALUES (#{roleID},#{role},#{createBy}, #{updateBy}, #{createDate}, #{updateDate})")
+	@Insert("INSERT INTO `tb_role`( `role`,`createby`, `updateby`, `createdate`, `updatedate`) "
+			+ "VALUES (#{role},#{createby}, #{updateby}, #{createdate}, #{updatedate})")
 	public boolean save(Role role);
 
-	@Delete("DELETE FROM `tb_role` WHERE `roleID`= #{id}")
+	@Delete("DELETE FROM `tb_role` WHERE `roleid`= #{id}")
 	public boolean removeRoleById(Integer id);
 	
-	@Update("UPDATE `tb_role` SET `roleID`=#{roleID},`role`=#{role},"
-			+ "`createBy`=#{createBy},`updateBy`=#{updateBy},`createDate`=#{createDate},"
-			+ "`updateDate`=#{updateDate} WHERE `roleID`= #{roleID}")
+	@Update("UPDATE `tb_role` SET `roleid`=#{roleid},`role`=#{role},"
+			+ "`createby`=#{createby},`updateby`=#{updateby},`createdate`=#{createdate},"
+			+ "`updatedate`=#{updatedate} WHERE `roleid`= #{roleid}")
 	public boolean updateRoleById(Role role);
 }
 
