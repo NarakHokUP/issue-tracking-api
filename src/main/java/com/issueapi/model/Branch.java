@@ -1,22 +1,20 @@
 package com.issueapi.model;
 
-import java.sql.Timestamp;
-
 public class Branch {
 	private int branchID;
 	private String branchName;
 	private String branchCode;
 	private String createBy;
 	private String updateBy;
-	private Timestamp createDate;
-	private Timestamp updateDate;
+	private String createDate;
+	private String updateDate;
 
 	public Branch() {
 		super();
 	}
 
 	public Branch(int branchID, String branchName, String branchCode, String createBy, String updateBy,
-			Timestamp createDate, Timestamp updateDate) {
+			String createDate, String updateDate) {
 		super();
 		this.branchID = branchID;
 		this.branchName = branchName;
@@ -67,19 +65,19 @@ public class Branch {
 		this.updateBy = updateBy;
 	}
 
-	public Timestamp getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Timestamp createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 
-	public Timestamp getUpdateDate() {
+	public String getUpdateDate() {
 		return updateDate;
 	}
 
-	public void setUpdateDate(Timestamp updateDate) {
+	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
 	}
 

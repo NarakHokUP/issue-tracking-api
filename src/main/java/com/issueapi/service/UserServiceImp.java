@@ -19,13 +19,7 @@ public class UserServiceImp implements UserService {
 
 		return userRepository.findAll();
 	}
-
-	@Override
-	public User searchById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public boolean createUser(User user) {
 		// TODO Auto-generated method stub
@@ -33,7 +27,7 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public boolean removeUser(Integer id) {
+	public boolean removeUser(Integer userId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -42,6 +36,11 @@ public class UserServiceImp implements UserService {
 	public boolean updateUser(User user) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public User findUserById(Integer userId) {
+		return userRepository.findUserById(userId);	
 	}
 
 }

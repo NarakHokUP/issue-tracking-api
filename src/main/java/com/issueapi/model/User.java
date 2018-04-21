@@ -1,6 +1,4 @@
 package com.issueapi.model;
-
-import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
 
@@ -9,21 +7,22 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class User implements UserDetails{
 
-	private int userID;
+	private int userId;
 	private String username;
 	private String password;
 	private String createBy;
 	private String updateBy;
-	private Timestamp createDate;
-	private Timestamp updateDate;
-
-	private List<Branch> branchs;
+	private String createDate;
+	private String updateDate;
+	private Department department;
+	private Branch branch;
 	private List<Role> roles;
-	public int getUserID() {
-		return userID;
+
+	public int getUserId() {
+		return userId;
 	}
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public String getUsername() {
 		return username;
@@ -49,24 +48,19 @@ public class User implements UserDetails{
 	public void setUpdateBy(String updateBy) {
 		this.updateBy = updateBy;
 	}
-	public Timestamp getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Timestamp createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	public Timestamp getUpdateDate() {
+	public String getUpdateDate() {
 		return updateDate;
 	}
-	public void setUpdateDate(Timestamp updateDate) {
+	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
 	}
-	public List<Branch> getBranchs() {
-		return branchs;
-	}
-	public void setBranchs(List<Branch> branchs) {
-		this.branchs = branchs;
-	}
+
 	public List<Role> getRoles() {
 		return roles;
 	}
@@ -74,27 +68,41 @@ public class User implements UserDetails{
 		this.roles = roles;
 	}
 	
-	@Override
-	public String toString() {
-		return "User [userID=" + userID + ", username=" + username + ", password=" + password + ", createBy=" + createBy
-				+ ", updateBy=" + updateBy + ", createDate=" + createDate + ", updateDate=" + updateDate + ", branchs="
-				+ branchs + ", roles=" + roles + "]";
+	public Department getDepartment() {
+		return department;
 	}
-	public User(int userID, String username, String password, String createBy, String updateBy, Timestamp createDate,
-			Timestamp updateDate, List<Branch> branchs, List<Role> roles) {
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	public Branch getBranch() {
+		return branch;
+	}
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+	
+	public User() {
 		super();
-		this.userID = userID;
+	}
+	public User(int userID, String username, String password, String createBy, String updateBy, String createDate,
+			String updateDate, Department department, Branch branch, List<Role> roles) {
+		super();
+		this.userId = userID;
 		this.username = username;
 		this.password = password;
 		this.createBy = createBy;
 		this.updateBy = updateBy;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
-		this.branchs = branchs;
+		this.department = department;
+		this.branch = branch;
 		this.roles = roles;
 	}
-	public User() {
-		super();
+	@Override
+	public String toString() {
+		return "User [userID=" + userId + ", username=" + username + ", password=" + password + ", createBy=" + createBy
+				+ ", updateBy=" + updateBy + ", createDate=" + createDate + ", updateDate=" + updateDate
+				+ ", department=" + department + ", branch=" + branch + ", roles=" + roles + "]";
 	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -7,11 +7,11 @@ import com.issueapi.model.User;
 public interface UserService {
 	public List<User> getAllUsers();
 
-	public User searchById(Integer id);
+	public User findUserById(Integer userId);
 
 	public boolean createUser(User user);
 
-	public boolean removeUser(Integer id);
+	public boolean removeUser(Integer userId);
 
 	public boolean updateUser(User user);
 

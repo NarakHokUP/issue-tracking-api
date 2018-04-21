@@ -13,17 +13,31 @@ import com.issueapi.model.User;
 
 @Repository
 public interface UserRepository {
-	@Select("SELECT userID, branchID, username, password, createBy, updateBy, createDate, updateDate" + 
+	@Select("SELECT userId, branchId, username, password, createBy, updateBy, createDate, updateDate" + 
 			" FROM tb_user")
+	@Results({
+		@Result(property="userId", column="userId"),
+		@Result(property="roles", column="userId",many =@Many(select="findRoleByuserId"))
+	})
+	
 	public List<User> findAll();
 	
-	@Select("select u.userID,u.username,u.password from tb_user u where u.username=#{username}")	
+	@Select("select u.userId,u.username,u.password from tb_user u where u.username=#{username}")	
 	@Results({
-				@Result(property="userID",column="userID"),
-				@Result(property="roles",column="userID" , many=@Many(select="findRoleByUserId"))
+				@Result(property="userId",column="userId"),
+				@Result(property="roles",column="userId" , many=@Many(select="findRoleByuserId"))
 		})
 	User loadUserByUsername(String username);
 	
-	@Select("select r.roleID,r.role from tb_user_role ur inner join tb_role r on r.roleID=ur.roleID where ur.userID=#{userID}")
-	List<Role> findRoleByUserId(int userID);
+	@Select("SELECT userId, branchId, username, password, createBy, updateBy, createDate, updateDate" + 
+			" FROM tb_user where userId=#{userId}")
+	@Results({
+		@Result(property="userId", column="userId"),
+		@Result(property="roles", column="userId",many =@Many(select="findRoleByuserId"))
+	})
+	public User findUserById(Integer userId);
+	
+	@Select("select r.roleId,r.role from tb_user_role ur inner join tb_role r on r.roleId=ur.roleId where ur.userId=#{userId}")
+	List<Role> findRoleByuserId(int userId);
+	
 }
