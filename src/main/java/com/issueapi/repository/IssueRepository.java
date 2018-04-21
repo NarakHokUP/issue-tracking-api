@@ -10,7 +10,7 @@ import com.issueapi.model.Issue;
 @Repository
 public interface IssueRepository {
 
-	@Select("SELECT issueId, categoryId, userId, departmentID, issueName, issueDetail, issuedDate, updateDate, issueStatus FROM tb_issue")
+	@Select("SELECT issueId, categoryId, userId, departmentId, issueName, issueDetail, issuedDate, updateDate, issueStatus FROM tb_issue")
 	public List<Issue> findAll();
 	
 }
