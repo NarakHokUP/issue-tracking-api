@@ -7,23 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.issueapi.model.Issue;
+import com.issueapi.model.Department;
 import com.issueapi.service.DepartmentService;
-import com.issueapi.service.IssueService;
 
 @RestController
 @RequestMapping("/api")
-public class IssueRestController {
-	@Autowired
-	private IssueService issueService;
+public class DepartmentRestController {
 	@Autowired
 	private DepartmentService departmentService;
+	List<Department> departments;
 
-	@GetMapping("/issues")
-	public List<Issue> getIssue() {
-		List<Issue> issues;
+	@GetMapping("/departments")
+	public List<Department> getDepartment() {
 
-		System.out.println(issueService.getAllIssue());
-		return issues = issueService.getAllIssue();
+		return departments = departmentService.findAll();
+
 	}
+
 }

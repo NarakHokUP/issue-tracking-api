@@ -3,27 +3,27 @@ package com.issueapi.model;
 import java.util.List;
 
 public class Issue {
-	
+
 	private int issueId;
 	private int categoryId;
-	private int userId;
+	private User user;
 	private int departmentId;
 	private String issueName;
 	private String issueDetail;
 	private String issuedDate;
 	private String updateDate;
 	private String issueStatus;
-	
+
 	public Issue() {
 		super();
 	}
 
-	public Issue(int issueId, int categoryId, int userId, int departmentId, String issueName, String issueDetail,
+	public Issue(int issueId, int categoryId, User user, int departmentId, String issueName, String issueDetail,
 			String issuedDate, String updateDate, String issueStatus) {
 		super();
 		this.issueId = issueId;
 		this.categoryId = categoryId;
-		this.userId = userId;
+		this.user = user;
 		this.departmentId = departmentId;
 		this.issueName = issueName;
 		this.issueDetail = issueDetail;
@@ -48,12 +48,12 @@ public class Issue {
 		this.categoryId = categoryId;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public int getDepartmentId() {
@@ -106,11 +106,9 @@ public class Issue {
 
 	@Override
 	public String toString() {
-		return "Issue [issueId=" + issueId + ", categoryId=" + categoryId + ", userId=" + userId + ", departmentId="
+		return "Issue [issueId=" + issueId + ", categoryId=" + categoryId + ", user=" + user + ", departmentId="
 				+ departmentId + ", issueName=" + issueName + ", issueDetail=" + issueDetail + ", issuedDate="
 				+ issuedDate + ", updateDate=" + updateDate + ", issueStatus=" + issueStatus + "]";
 	}
-
-	
 
 }
