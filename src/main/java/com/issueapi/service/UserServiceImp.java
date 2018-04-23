@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.issueapi.model.Role;
 import com.issueapi.model.User;
 import com.issueapi.repository.UserRepository;
 
@@ -19,11 +21,22 @@ public class UserServiceImp implements UserService {
 
 		return userRepository.findAll();
 	}
-	
+
+	@Transactional
 	@Override
 	public boolean createUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean status = userRepository.saveUser(user);
+		if (status) {
+			for (Role role : user.getRoles()) {
+				userRepository.saveUserRole(user.getUserId(), role.getRoleid());
+			}
+			System.out.println("-> Added Successfully!");
+		} else {
+			System.out.println("-> Added Fail!");
+			return false;
+		}
+		return status;
+
 	}
 
 	@Override
@@ -40,7 +53,7 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public User findUserById(Integer userId) {
-		return userRepository.findUserById(userId);	
+		return userRepository.findUserById(userId);
 	}
 
 }

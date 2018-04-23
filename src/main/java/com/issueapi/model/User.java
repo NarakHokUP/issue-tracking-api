@@ -14,8 +14,8 @@ public class User implements UserDetails{
 	private String updateBy;
 	private String createDate;
 	private String updateDate;
-	private Department department;
-	private Branch branch;
+	private Integer departmentId;
+	private Integer branchId;
 	private List<Role> roles;
 
 	public int getUserId() {
@@ -68,41 +68,51 @@ public class User implements UserDetails{
 		this.roles = roles;
 	}
 	
-	public Department getDepartment() {
-		return department;
+	public Integer getDepartmentId() {
+		return departmentId;
 	}
-	public void setDepartment(Department department) {
-		this.department = department;
+	public void setDepartmentId(Integer departmentId) {
+		this.departmentId = departmentId;
 	}
-	public Branch getBranch() {
-		return branch;
+	public Integer getBranchId() {
+		return branchId;
 	}
-	public void setBranch(Branch branch) {
-		this.branch = branch;
+	public void setBranchId(Integer branchId) {
+		this.branchId = branchId;
+	}
+	public User() {
 	}
 	
-	public User() {
-		super();
-	}
-	public User(int userID, String username, String password, String createBy, String updateBy, String createDate,
-			String updateDate, Department department, Branch branch, List<Role> roles) {
-		super();
-		this.userId = userID;
+	public User( String username, String password, String createBy, String updateBy, String createDate,
+			String updateDate, Integer departmentId, Integer branchId, List<Role> roles) {
 		this.username = username;
 		this.password = password;
 		this.createBy = createBy;
 		this.updateBy = updateBy;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
-		this.department = department;
-		this.branch = branch;
+		this.departmentId = departmentId;
+		this.branchId = branchId;
+		this.roles = roles;
+	}
+	public User(int userId, String username, String password, String createBy, String updateBy, String createDate,
+			String updateDate, Integer departmentId, Integer branchId, List<Role> roles) {
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.createBy = createBy;
+		this.updateBy = updateBy;
+		this.createDate = createDate;
+		this.updateDate = updateDate;
+		this.departmentId = departmentId;
+		this.branchId = branchId;
 		this.roles = roles;
 	}
 	@Override
 	public String toString() {
-		return "User [userID=" + userId + ", username=" + username + ", password=" + password + ", createBy=" + createBy
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", createBy=" + createBy
 				+ ", updateBy=" + updateBy + ", createDate=" + createDate + ", updateDate=" + updateDate
-				+ ", department=" + department + ", branch=" + branch + ", roles=" + roles + "]";
+				+ ", departmentId=" + departmentId + ", branchId=" + branchId + ", roles=" + roles + "]";
 	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

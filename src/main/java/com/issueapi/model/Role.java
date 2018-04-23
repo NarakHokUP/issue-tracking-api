@@ -54,6 +54,10 @@ public class Role implements GrantedAuthority{
 		this.createdate = createdate;
 		this.updatedate = updatedate;
 	}
+	public Role(int roleid) {
+		super();
+		this.roleid = roleid;
+	}
 	public Role() {
 		super();
 	}
