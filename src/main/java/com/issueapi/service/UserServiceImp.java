@@ -25,30 +25,60 @@ public class UserServiceImp implements UserService {
 	@Transactional
 	@Override
 	public boolean createUser(User user) {
+		System.out.println("API Service from Controller get  New User b4 save " + user);
 		boolean status = userRepository.saveUser(user);
+		System.out.println("API Service New User after save and getUserId() from DB= " + user);
 		if (status) {
 			for (Role role : user.getRoles()) {
 				userRepository.saveUserRole(user.getUserId(), role.getRoleid());
 			}
-			System.out.println("-> Added Successfully!");
+			System.out.println(status + "-> Added Successfully!");
 		} else {
-			System.out.println("-> Added Fail!");
+			System.out.println(status + "-> Added Fail!");
 			return false;
 		}
 		return status;
 
 	}
-
+	@Transactional
 	@Override
-	public boolean removeUser(Integer userId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteUserByUserId(Integer userId) {
+		System.out.println("Deleting User Id= " + userId);
+		boolean ustatus=userRepository.deleteUserByUserId(userId);
+		boolean urstatus=false;
+		if (ustatus) {
+			urstatus=userRepository.deleteUserRoleByUserId(userId);
+			System.out.println(ustatus + "-> Deleted User Successfully!");
+			System.out.println(urstatus + "-> Deleted User Role Successfully!");
+		} else {
+			System.out.println(ustatus + "-> Deleted User Fail!");
+			System.out.println(urstatus + "-> Deleted  User Role Fail!");
+			return false;
+		}
+		return ustatus ;
+
 	}
 
+	@Transactional
 	@Override
-	public boolean updateUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateUserByUserId(User user) {
+		boolean status=userRepository.updateUserByUserId(user);
+		System.out.println(status + "-> Updating User!" + user);
+		boolean dstatus=false,cstatus;
+		if (status) {
+			dstatus=userRepository.deleteUserRoleByUserId(user.getUserId());
+			System.out.println(dstatus + "-> Deleted Old User Role User Id= " + user.getUserId() + " Roles: " + user.getRoles());
+			for (Role role : user.getRoles()) {
+				cstatus=userRepository.saveUserRole(user.getUserId(), role.getRoleid());
+				System.out.println(cstatus + "-> Created User Role User Id=" + user.getUserId() + " Role Id= " + role.getRoleid());
+			}
+			System.out.println(status + "-> Updated User with Roles Successfully!");
+		} else {
+			System.out.println(status + "-> Updated Fail!");
+			return false;
+		}
+		
+		return status;
 	}
 
 	@Override

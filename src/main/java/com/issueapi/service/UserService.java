@@ -11,8 +11,8 @@ public interface UserService {
 
 	public boolean createUser(User user);
 
-	public boolean removeUser(Integer userId);
+	public boolean deleteUserByUserId(Integer userId);
 
-	public boolean updateUser(User user);
+	public boolean updateUserByUserId(User user);
 
 }
