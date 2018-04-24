@@ -23,7 +23,7 @@ public class RoleServiceImp implements RoleService{
 				return role;
 			}
 		}
-		return null;
+		return new Role();
 	}
 	@Override
 	public boolean createRole(Role role) {
