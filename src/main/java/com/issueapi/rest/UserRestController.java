@@ -3,6 +3,8 @@ package com.issueapi.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,34 +40,41 @@ public class UserRestController {
 		System.out.println(userService.findUserById(userId));
 		return user;
 	}
-	
+
 	@PostMapping("/user")
-	public boolean createUser(@RequestBody User user){
-		System.out.println("API get user from Client B4 Create"+user);
-		boolean b=userService.createUser(user);
-		if(b==false){
+	public boolean createUser(@RequestBody User user) {
+		System.out.println("API get user from Client B4 Create" + user);
+		boolean b = userService.createUser(user);
+		if (b == false) {
 			return false;
 		}
-		System.out.println(b +" Created "+user);
+		System.out.println(b + " Created " + user);
 		return b;
 	}
+
 	@PutMapping("/user")
-	public boolean updateUserByUserId(@RequestBody User user){
-		System.out.println("API get user from Client B4 Update"+user);
-		boolean b=userService.updateUserByUserId(user);
-		if(b==false){
+	public boolean updateUserByUserId(@RequestBody User user) {
+		System.out.println("API get user from Client B4 Update" + user);
+		boolean b = userService.updateUserByUserId(user);
+		if (b == false) {
 			return false;
 		}
-		System.out.println(b +" Updated "+user);
+		System.out.println(b + " Updated " + user);
 		return b;
 	}
+
 	@DeleteMapping("/user/remove")
-	public boolean deleteUserByUserId(@RequestParam("userId") Integer userId){
-		boolean b=userService.deleteUserByUserId(userId);
-		if(b==false){
+	public boolean deleteUserByUserId(@RequestParam("userId") Integer userId) {
+		boolean b = userService.deleteUserByUserId(userId);
+		if (b == false) {
 			return false;
 		}
-		System.out.println(b +" API Controller Deleted "+userId);
+		System.out.println(b + " API Controller Deleted " + userId);
 		return b;
+	}
+
+	@GetMapping("/user/userDetail")
+	public User loadUserByUsername(@RequestParam("username") String username) {
+		return userService.loadUserByUsername(username);
 	}
 }

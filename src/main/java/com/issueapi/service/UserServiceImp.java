@@ -40,14 +40,15 @@ public class UserServiceImp implements UserService {
 		return status;
 
 	}
+
 	@Transactional
 	@Override
 	public boolean deleteUserByUserId(Integer userId) {
 		System.out.println("Deleting User Id= " + userId);
-		boolean ustatus=userRepository.deleteUserByUserId(userId);
-		boolean urstatus=false;
+		boolean ustatus = userRepository.deleteUserByUserId(userId);
+		boolean urstatus = false;
 		if (ustatus) {
-			urstatus=userRepository.deleteUserRoleByUserId(userId);
+			urstatus = userRepository.deleteUserRoleByUserId(userId);
 			System.out.println(ustatus + "-> Deleted User Successfully!");
 			System.out.println(urstatus + "-> Deleted User Role Successfully!");
 		} else {
@@ -55,35 +56,44 @@ public class UserServiceImp implements UserService {
 			System.out.println(urstatus + "-> Deleted  User Role Fail!");
 			return false;
 		}
-		return ustatus ;
+		return ustatus;
 
 	}
 
 	@Transactional
 	@Override
 	public boolean updateUserByUserId(User user) {
-		boolean status=userRepository.updateUserByUserId(user);
+		boolean status = userRepository.updateUserByUserId(user);
 		System.out.println(status + "-> Updating User!" + user);
-		boolean dstatus=false,cstatus;
+		boolean dstatus = false, cstatus;
 		if (status) {
-			dstatus=userRepository.deleteUserRoleByUserId(user.getUserId());
-			System.out.println(dstatus + "-> Deleted Old User Role User Id= " + user.getUserId() + " Roles: " + user.getRoles());
+			dstatus = userRepository.deleteUserRoleByUserId(user.getUserId());
+			System.out.println(
+					dstatus + "-> Deleted Old User Role User Id= " + user.getUserId() + " Roles: " + user.getRoles());
 			for (Role role : user.getRoles()) {
-				cstatus=userRepository.saveUserRole(user.getUserId(), role.getRoleid());
-				System.out.println(cstatus + "-> Created User Role User Id=" + user.getUserId() + " Role Id= " + role.getRoleid());
+				cstatus = userRepository.saveUserRole(user.getUserId(), role.getRoleid());
+				System.out.println(
+						cstatus + "-> Created User Role User Id=" + user.getUserId() + " Role Id= " + role.getRoleid());
 			}
 			System.out.println(status + "-> Updated User with Roles Successfully!");
 		} else {
 			System.out.println(status + "-> Updated Fail!");
 			return false;
 		}
-		
+
 		return status;
 	}
 
 	@Override
 	public User findUserById(Integer userId) {
 		return userRepository.findUserById(userId);
+	}
+
+	@Override
+	public User loadUserByUsername(String username) {
+		User user = userRepository.loadUserByUsername(username);
+		System.out.println("API loadUser -> " + user);
+		return user;
 	}
 
 }

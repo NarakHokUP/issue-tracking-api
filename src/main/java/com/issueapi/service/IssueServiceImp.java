@@ -17,5 +17,10 @@ public class IssueServiceImp implements IssueService {
 	public List<Issue> getAllIssue() {
 		return issueRepository.findAll();
 	}
+	@Override
+	public boolean create(Issue issue) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

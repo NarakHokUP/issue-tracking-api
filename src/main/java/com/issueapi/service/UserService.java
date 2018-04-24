@@ -14,5 +14,7 @@ public interface UserService {
 	public boolean deleteUserByUserId(Integer userId);
 
 	public boolean updateUserByUserId(User user);
+	
+	public User loadUserByUsername(String username);
 
 }

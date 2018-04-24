@@ -20,6 +20,7 @@ import com.issueapi.model.User;
 public interface UserRepository {
 	@Select("SELECT userId, branchId,departmentId, username, password, createBy, updateBy, createDate, updateDate"
 			+ " FROM tb_user")
+	
 	@Results({ @Result(property = "userId", column = "userId"),
 			@Result(property = "roles", column = "userId", many = @Many(select = "findRoleByuserId")) })
 

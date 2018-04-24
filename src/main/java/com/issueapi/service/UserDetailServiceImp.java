@@ -1,4 +1,4 @@
-package com.issueapi.service;
+/*package com.issueapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,3 +23,4 @@ public class UserDetailServiceImp implements UserDetailsService {
 	}
 	
 }
+*/
