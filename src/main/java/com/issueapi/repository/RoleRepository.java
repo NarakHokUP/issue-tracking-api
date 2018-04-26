@@ -13,10 +13,10 @@ import com.issueapi.model.Role;
 
 @Repository
 public interface RoleRepository {
-	@Select("select * from tb_role")
+	@Select("select r.roleid,r.role,u.username createby,u.username updateby,r.createdate,r.updatedate from tb_role r inner join tb_user u on r.createby=u.userId")
 	public List<Role> findAll();
 	
-	@Select("select * from tb_role where roleid=#{id}")
+	@Select("select r.roleid,r.role,u.username createby,u.username updateby,r.createdate,r.updatedate from tb_role r inner join tb_user u on r.createby=u.userId where roleid=#{id}")
 	public Role findRoleById(@PathVariable Integer id);
 	
 	@Insert("INSERT INTO `tb_role`( `role`,`createby`, `updateby`, `createdate`, `updatedate`) "

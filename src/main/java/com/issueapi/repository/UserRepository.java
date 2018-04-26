@@ -18,8 +18,7 @@ import com.issueapi.model.User;
 
 @Repository
 public interface UserRepository {
-	@Select("SELECT userId, branchId,departmentId, username, password, createBy, updateBy, createDate, updateDate"
-			+ " FROM tb_user")
+	@Select("SELECT u.userId, b.branchName,d.description department, u.username, u.password,u.username createBy,u.username updateBy, u.createDate, u.updateDate FROM tb_user u inner join tb_department d on d.departmentId=u.departmentId inner join tb_branch b on u.branchId=b.branchId")
 	
 	@Results({ @Result(property = "userId", column = "userId"),
 			@Result(property = "roles", column = "userId", many = @Many(select = "findRoleByuserId")) })
@@ -31,8 +30,7 @@ public interface UserRepository {
 			@Result(property = "roles", column = "userId", many = @Many(select = "findRoleByuserId")) })
 	User loadUserByUsername(String username);
 
-	@Select("SELECT userId, branchId,departmentId, username, password, createBy, updateBy, createDate, updateDate"
-			+ " FROM tb_user where userId=#{userId}")
+	@Select("SELECT u.userId,u.departmentId, b.branchName,d.description department, u.username, u.password,u.username createBy,u.username updateBy, u.createDate, u.updateDate FROM tb_user u inner join tb_department d on d.departmentId=u.departmentId inner join tb_branch b on u.branchId=b.branchId where u.userId=#{userId}")
 	@Results({ @Result(property = "userId", column = "userId"),
 			@Result(property = "roles", column = "userId", many = @Many(select = "findRoleByuserId")) })
 	public User findUserById(Integer userId);
@@ -40,7 +38,7 @@ public interface UserRepository {
 	@Select("select r.roleId,r.role from tb_user_role ur inner join tb_role r on r.roleId=ur.roleId where ur.userId=#{userId}")
 	List<Role> findRoleByuserId(int userId);
 
-	@Insert("INSERT INTO tb_user(branchId, departmentId, username, password,createBy,updateBy,createDate,updateDate) VALUES (#{branchId}, #{departmentId},#{username}, 12356,#{createBy},#{updateBy},#{createDate},#{updateDate})")
+	@Insert("INSERT INTO tb_user(branchId, departmentId, username, password,createBy,updateBy,createDate,updateDate) VALUES (#{branchId}, #{departmentId},#{username}, #{password},#{createBy},#{updateBy},#{createDate},#{updateDate})")
 	@SelectKey(before = false, statement = "SELECT LAST_INSERT_ID()", keyColumn = "userId", keyProperty = "userId", resultType = Integer.class)
 	public boolean saveUser(User user);
 
