@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.issueapi.model.Issue;
+import com.issueapi.model.Role;
 import com.issueapi.service.DepartmentService;
 import com.issueapi.service.IssueService;
 
@@ -26,4 +29,11 @@ public class IssueRestController {
 		System.out.println(issueService.getAllIssue());
 		return issues = issueService.getAllIssue();
 	}
+	
+	@PostMapping("/issues")
+	public boolean createIssue(@RequestBody Issue issue){
+		 	System.out.println(issue);
+		 	return issueService.create(issue);	
+	}
+	
 }

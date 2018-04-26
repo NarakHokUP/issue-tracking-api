@@ -19,8 +19,8 @@ public class IssueServiceImp implements IssueService {
 	}
 	@Override
 	public boolean create(Issue issue) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return issueRepository.save(issue);
 	}
 
 }
