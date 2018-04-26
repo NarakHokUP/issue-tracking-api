@@ -11,7 +11,7 @@ import com.issueapi.model.Branch;
 
 @Repository
 public interface BranchRepository {
-	@Select("SELECT branchId, branchName, branchCode, createBy, updateBy, createDate, updateDate FROM tb_branch")
+	@Select("SELECT b.branchId, b.branchName, b.branchCode, u.username createBy,u.username updateBy, b.createDate, b.updateDate FROM tb_branch b inner join tb_user u on b.createBy=u.userId")
 	public List<Branch> findAllBranch();
 
 	@Select("SELECT branchId, branchName, branchCode, createBy, updateBy, createDate, updateDate FROM tb_branch where branchId=#{branchId}")

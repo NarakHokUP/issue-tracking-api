@@ -13,7 +13,7 @@ import com.issueapi.model.Role;
 
 @Repository
 public interface RoleRepository {
-	@Select("select r.roleid,r.role,u.username createby,u.username updateby,r.createdate,r.updatedate from tb_role r inner join tb_user u on r.createby=u.userId")
+	@Select("select r.roleid,r.role,u.username createby,u.username updateby,r.createdate,r.updatedate from tb_role r inner join tb_user u on r.roleId=u.userId")
 	public List<Role> findAll();
 	
 	@Select("select r.roleid,r.role,u.username createby,u.username updateby,r.createdate,r.updatedate from tb_role r inner join tb_user u on r.createby=u.userId where roleid=#{id}")
