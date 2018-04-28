@@ -59,7 +59,7 @@ public class BranchController {
 		return branchService.removeBranchById(branchId);
 	}
 	
-	@PutMapping("/branch/update")
+	@PutMapping("/branch/edit")
 	public boolean updateBranchById(@RequestBody Branch branch){
 		if(branch==null){
 			System.out.println("Update Branch Failed !!!");

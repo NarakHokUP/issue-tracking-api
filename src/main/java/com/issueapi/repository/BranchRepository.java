@@ -11,10 +11,10 @@ import com.issueapi.model.Branch;
 
 @Repository
 public interface BranchRepository {
-	@Select("SELECT b.branchId, b.branchName, b.branchCode, u.username createBy,u.username updateBy, b.createDate, b.updateDate FROM tb_branch b inner join tb_user u on b.createBy=u.userId")
+	@Select("SELECT b.branchId, b.branchName, b.branchCode, u.username createBy,u.username updateBy, b.createDate, b.updateDate FROM tb_branch b inner join tb_user u on b.createBy=u.userId order by b.branchId")
 	public List<Branch> findAllBranch();
 
-	@Select("SELECT branchId, branchName, branchCode, createBy, updateBy, createDate, updateDate FROM tb_branch where branchId=#{branchId}")
+	@Select("SELECT b.branchId, b.branchName, b.branchCode, b.createBy, b.updateBy, b.createDate, b.updateDate FROM tb_branch b where branchId=#{branchId}")
 	public Branch findBranchById(@PathVariable("branchId") Integer branchId);
 
 	@Insert("INSERT INTO tb_branch( branchName, branchCode, createBy, updateBy, createDate, updateDate) VALUES (#{branchName}, #{branchCode}, #{createBy}, #{updateBy}, #{createDate}, #{updateDate})")
