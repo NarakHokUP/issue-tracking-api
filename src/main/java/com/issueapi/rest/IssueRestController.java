@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,28 @@ public class IssueRestController {
 	public boolean createIssue(@RequestBody Issue issue){
 		 	System.out.println(issue);
 		 	return issueService.create(issue);	
+	}
+	
+	@PutMapping("/lineapprove")
+	public boolean lineManagerApproval(Issue issue){
+		if(issue==null){
+			return false;
+		}
+		return issueService.lineManagerApproval(issue);
+	}
+	@PutMapping("/departmentapprove")
+	public boolean DepartmentManagerApproval(Issue issue){
+		if(issue==null){
+			return false;
+		}
+		return issueService.DepartmentManagerApproval(issue);
+	}
+	@PutMapping("/rejectapprove")
+	public boolean LineORDepartmentManagerReject(Issue issue){
+		if(issue==null){
+			return false;
+		}
+		return issueService.LineORDepartmentManagerReject(issue);
 	}
 	
 }

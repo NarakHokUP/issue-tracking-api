@@ -73,6 +73,11 @@
 			<version>2.2.2</version>
 		</dependency>
 		<!-- end enable swagger API docs for Developer -->
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>2.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
