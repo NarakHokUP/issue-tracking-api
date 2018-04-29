@@ -11,11 +11,11 @@ import com.issueapi.model.Issue;
 @Repository
 public interface IssueRepository {
 
-	@Select("SELECT issueId, categoryId, userId, departmentId, issueName, issueDetail, issuedDate, updateDate, issueStatus FROM tb_issue")
+	@Select("SELECT issueId, issueTypeId, userId, departmentId, issueName, issueDetail, issuedDate, updateDate, issueStatus FROM tb_issue")
 	public List<Issue> findAll();
 	
 	
-@Insert("INSERT INTO tb_issue	(issueId, categoryId, userId, departmentId, issueName, issueDetail, issuedDate, updateDate, issueStatus) VALUES (#{issueId}, #{categoryId}, #{userId}, #{departmentId}, #{issueName},#{issueDetail}, #{issuedDate}, #{updateDate}, #{issueStatus})")
+@Insert("INSERT INTO tb_issue	(issueId, issueTypeId, userId, departmentId, issueName, issueDetail, issuedDate, updateDate, issueStatus) VALUES (#{issueId}, #{issueTypeId}, #{userId}, #{departmentId}, #{issueName},#{issueDetail}, #{issuedDate}, #{updateDate}, 'P')")
 	public boolean save(Issue issue);
 	
 }
