@@ -22,5 +22,27 @@ public class IssueServiceImp implements IssueService {
 		
 		return issueRepository.save(issue);
 	}
+	@Override
+	public boolean lineManagerApproval(Issue issue) {
+		if(issue==null){
+			return false;
+		}
+		return issueRepository.lineManagerApproval(issue);
+	}
+	@Override
+	public boolean DepartmentManagerApproval(Issue issue) {
+		if(issue==null){
+			return issueRepository.DepartmentManagerApproval(issue);
+		}
+		return false;
+	}
+	@Override
+	public boolean LineORDepartmentManagerReject(Issue issue) {
+		if(issue==null){
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return issueRepository.LineORDepartmentManagerReject(issue);
+	}
 
 }
