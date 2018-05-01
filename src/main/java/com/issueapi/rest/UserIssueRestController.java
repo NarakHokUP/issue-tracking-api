@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.issueapi.model.Issue;
 import com.issueapi.model.IssueApproval;
 import com.issueapi.service.IssueApprovalService;
 
@@ -31,5 +33,14 @@ public class UserIssueRestController {
 			return false;
 		}
 		return issueApprovalServiceImp.createIssueApproval(issueApproval);
+	}
+	
+	@PutMapping
+	public boolean lineManagerApproval(@RequestBody IssueApproval issueApproval,@RequestBody Issue issue){
+		
+		if(issueApproval==null || issue==null){
+			return false;
+		}
+		return false;
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.issueapi.model.Issue;
+import com.issueapi.model.IssueApproval;
 import com.issueapi.model.Role;
 import com.issueapi.service.DepartmentService;
 import com.issueapi.service.IssueService;
@@ -38,25 +39,25 @@ public class IssueRestController {
 	}
 	
 	@PutMapping("/lineapprove")
-	public boolean lineManagerApproval(Issue issue){
+	public boolean lineManagerApproval(Issue issue,IssueApproval issueApproval){
 		if(issue==null){
 			return false;
 		}
-		return issueService.lineManagerApproval(issue);
+		return issueService.lineManagerApproval(issue,issueApproval);
 	}
 	@PutMapping("/departmentapprove")
-	public boolean DepartmentManagerApproval(Issue issue){
+	public boolean DepartmentManagerApproval(Issue issue,IssueApproval issueApproval){
 		if(issue==null){
 			return false;
 		}
-		return issueService.DepartmentManagerApproval(issue);
+		return issueService.DepartmentManagerApproval(issue, issueApproval);
 	}
 	@PutMapping("/rejectapprove")
-	public boolean LineORDepartmentManagerReject(Issue issue){
+	public boolean LineORDepartmentManagerReject(Issue issue,IssueApproval issueApproval){
 		if(issue==null){
 			return false;
 		}
-		return issueService.LineORDepartmentManagerReject(issue);
+		return issueService.LineORDepartmentManagerReject(issue,issueApproval);
 	}
 	
 }
