@@ -35,12 +35,4 @@ public class UserIssueRestController {
 		return issueApprovalServiceImp.createIssueApproval(issueApproval);
 	}
 	
-	@PutMapping
-	public boolean lineManagerApproval(@RequestBody IssueApproval issueApproval,@RequestBody Issue issue){
-		
-		if(issueApproval==null || issue==null){
-			return false;
-		}
-		return false;
-	}
 }

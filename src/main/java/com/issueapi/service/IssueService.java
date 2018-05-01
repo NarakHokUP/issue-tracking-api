@@ -7,6 +7,8 @@ import com.issueapi.model.IssueApproval;
 public interface IssueService {
 
 	public List<Issue> getAllIssue();
+	
+	public Issue findIssueById(Integer issueId);
 
 	public boolean create(Issue issue);
 

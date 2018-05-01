@@ -56,5 +56,12 @@ public class IssueServiceImp implements IssueService {
 		// TODO Auto-generated method stub
 		return issueRepository.LineORDepartmentManagerReject(issue);
 	}
+	@Override
+	public Issue findIssueById(Integer issueId) {
+		if(issueId==null){
+			return new Issue();
+		}
+		return issueRepository.findIssueById(issueId);
+	}
 
 }

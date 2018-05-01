@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,14 @@ public class IssueRestController {
 
 		System.out.println(issueService.getAllIssue());
 		return issues = issueService.getAllIssue();
+	}
+	
+	@GetMapping("/issue/{issueId}")
+	public Issue findIssueById(@PathVariable Integer issueId){
+		if(issueId==null){
+			return new Issue();
+		}
+		return issueService.findIssueById(issueId);
 	}
 	
 	@PostMapping("/issues")
